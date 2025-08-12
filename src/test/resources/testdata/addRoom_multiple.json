@@ -1,0 +1,30 @@
+[
+    {
+        "roomId": 11,
+        "hotelId": "1001a",
+        "roomType": "SINGLE",
+        "roomStatus": "AVAILABLE",
+        "roomPrice": 20000
+    },
+    {
+        "roomId": 12,
+        "hotelId": "1002b",
+        "roomType": "DOUBLE",
+        "roomStatus": "AVAILABLE",
+        "roomPrice": 35000
+    },
+    {
+        "roomId": 13,
+        "hotelId": "1003c",
+        "roomType": "SINGLE",
+        "roomStatus": "NOTAVAILABLE",
+        "roomPrice": 18000
+    },
+    {
+        "roomId": 14,
+        "hotelId": "1003d",
+        "roomType": "SINGLE",
+        "roomStatus": "NA",
+        "roomPrice": 18000
+    }
+]

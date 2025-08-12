@@ -1,6 +1,8 @@
 package tests;
 
 import base.TestBase;
+import dataproviders.RoomDataProvider;
+
 import org.testng.annotations.Test;
 import utils.JsonDataLoader;
 import utils.TokenManager;
@@ -49,4 +51,21 @@ public class AddRoomTest extends TestBase {
 
         getTest().pass("Negative case for invalid roomStatus returned 400 as expected");
     }
+    
+    
+    @Test(dataProvider = "roomData", dataProviderClass = RoomDataProvider.class)
+    public void addMultipleRoom(Map<String, Object> roomData) {
+        given()
+            .contentType("application/x-www-form-urlencoded")
+            .header("Authorization", TokenManager.getAccessToken())
+            .formParams(roomData)
+            .log().all()
+        .when()
+            .post("/addRoom")
+        .then()
+            .log().all()
+            .statusCode(200)
+            .body(containsString("<roomId>" + roomData.get("roomId") + "</roomId>"));
+    }
+    
 }
