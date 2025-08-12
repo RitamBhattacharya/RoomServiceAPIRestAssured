@@ -1,0 +1,7 @@
+{
+  "roomId": 12,
+  "hotelId": "1001a",
+  "roomType": "SINGLE",
+  "roomStatus": "INVALID_STATUS",
+  "roomPrice": 20000
+}
