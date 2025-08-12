@@ -20,9 +20,11 @@ public class UpdateRoomTest extends TestBase {
                 .accept("application/json")
                 .formParam("roomId", 101)
                 .formParam("roomPrice", 1500.0F)
+                .log().all() // Log request
         .when()
                 .put("/updateRoomPrice")
         .then()
+                .log().all() // Log response
                 .statusCode(200)
                 .extract()
                 .jsonPath().getList("", Room.class); // Extract as List<Room>
@@ -47,12 +49,13 @@ public class UpdateRoomTest extends TestBase {
             .accept("application/json")
             .formParam("roomId", 9999) // Invalid room ID
             .formParam("roomPrice", 1500.0F)
+            .log().all() // Log request
         .when()
             .put("/updateRoomPrice")
         .then()
-        .statusCode(anyOf(equalTo(404), equalTo(204))); // Expected not found / no content
+            .log().all() // Log response
+            .statusCode(anyOf(equalTo(404), equalTo(204))); // Expected not found / no content
 
         getTest().pass("Negative case for invalid roomId returned proper error code");
     }
-
 }
