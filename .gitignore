@@ -1,0 +1,14 @@
+# Ignore Maven target directory
+target
+
+# Ignore Eclipse settings
+.classpath
+.project
+.settings
+
+# Ignore TestNG output
+test-output
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
