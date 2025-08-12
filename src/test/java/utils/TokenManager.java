@@ -5,6 +5,7 @@ import io.restassured.response.Response;
 
 public class TokenManager {
 
+    // Request auth code using username and password
     public static String getAuthCode() {
         Response res = RestAssured.given()
                 .baseUri(ConfigLoader.get("auth_url"))
@@ -15,6 +16,7 @@ public class TokenManager {
         return res.jsonPath().getString("auth_code");
     }
 
+    // Exchange auth code for access token
     public static String getAccessToken() {
         String authCode = getAuthCode();
         Response res = RestAssured.given()

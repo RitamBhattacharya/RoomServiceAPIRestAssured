@@ -1,50 +1,64 @@
 package pojo;
 
 public class Room {
-	private int roomId;
-	private String hotelId;
-	private String roomType;
-	private String roomStatus;
-	private double roomPrice;
+    // Room unique identifier
+    private int roomId;
+    // Associated hotel ID
+    private String hotelId;
+    // Type of room (e.g., SINGLE, DOUBLE)
+    private String roomType;
+    // Status of room (e.g., AVAILABLE, NOTAVAILABLE)
+    private String roomStatus;
+    // Price of the room
+    private double roomPrice;
 
-	// Getters and Setters
-	public int getRoomId() {
-		return roomId;
-	}
+    // Getter for roomId
+    public int getRoomId() {
+        return roomId;
+    }
 
-	public void setRoomId(int roomId) {
-		this.roomId = roomId;
-	}
+    // Setter for roomId
+    public void setRoomId(int roomId) {
+        this.roomId = roomId;
+    }
 
-	public String getHotelId() {
-		return hotelId;
-	}
+    // Getter for hotelId
+    public String getHotelId() {
+        return hotelId;
+    }
 
-	public void setHotelId(String hotelId) {
-		this.hotelId = hotelId;
-	}
+    // Setter for hotelId
+    public void setHotelId(String hotelId) {
+        this.hotelId = hotelId;
+    }
 
-	public String getRoomType() {
-		return roomType;
-	}
+    // Getter for roomType
+    public String getRoomType() {
+        return roomType;
+    }
 
-	public void setRoomType(String roomType) {
-		this.roomType = roomType;
-	}
+    // Setter for roomType
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
 
-	public String getRoomStatus() {
-		return roomStatus;
-	}
+    // Getter for roomStatus
+    public String getRoomStatus() {
+        return roomStatus;
+    }
 
-	public void setRoomStatus(String roomStatus) {
-		this.roomStatus = roomStatus;
-	}
+    // Setter for roomStatus
+    public void setRoomStatus(String roomStatus) {
+        this.roomStatus = roomStatus;
+    }
 
-	public double getRoomPrice() {
-		return roomPrice;
-	}
+    // Getter for roomPrice
+    public double getRoomPrice() {
+        return roomPrice;
+    }
 
-	public void setRoomPrice(double roomPrice) {
-		this.roomPrice = roomPrice;
-	}
+    // Setter for roomPrice
+    public void setRoomPrice(double roomPrice) {
+        this.roomPrice = roomPrice;
+    }
 }

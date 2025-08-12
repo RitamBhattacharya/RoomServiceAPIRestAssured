@@ -6,24 +6,25 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 import java.io.File;
 
 public class ExtentManager {
-    private static ExtentReports extent;
+    private static ExtentReports extent; // Singleton instance of ExtentReports
 
     public synchronized static ExtentReports getInstance() {
         if (extent == null) {
-            String reportDir = "target/ExtentReports";
-            new File(reportDir).mkdirs();
-            String file = reportDir + File.separator + "RoomServiceApiReport.html";
+            String reportDir = "target/ExtentReports"; // Report output directory
+            new File(reportDir).mkdirs(); // Create directory if missing
+            String file = reportDir + File.separator + "RoomServiceApiReport.html"; // Report file path
 
-            // Use ExtentSparkReporter in ExtentReports 5+
+            // Initialize and configure Spark reporter
             ExtentSparkReporter sparkReporter = new ExtentSparkReporter(file);
-            sparkReporter.config().setDocumentTitle("Room Service API Automation Report");
-            sparkReporter.config().setReportName("Room Service API Test Results");
-            sparkReporter.config().setTheme(Theme.STANDARD);
+            sparkReporter.config().setDocumentTitle("Room Service API Automation Report"); // HTML report title
+            sparkReporter.config().setReportName("Room Service API Test Results"); // Report name in UI
+            sparkReporter.config().setTheme(Theme.STANDARD); // Set theme
 
+            // Attach reporter and set environment info
             extent = new ExtentReports();
             extent.attachReporter(sparkReporter);
             extent.setSystemInfo("Environment", "QA");
         }
-        return extent;
+        return extent; // Return single instance
     }
 }
