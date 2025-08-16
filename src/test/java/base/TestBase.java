@@ -13,7 +13,7 @@ public class TestBase {
 	@BeforeSuite
 	public void beforeSuite() {
 		extent = ExtentManager.getInstance(); // Initialize ExtentReports
-		RestAssured.baseURI = ConfigLoader.get("Base_URL"); // Set base URI for RestAssured
+		RestAssured.baseURI = ConfigLoader.get("Base_URL");// Set base URI for RestAssured
 	}
 
 	@AfterSuite
