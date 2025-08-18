@@ -1,37 +1,50 @@
 pipeline {
-    agent any
+  agent any
 
-    tools {
-        maven 'Maven3'  // make sure Maven is configured in Jenkins Global Tool Configuration
-        jdk 'JDK17'     // use your configured JDK version
+  tools {
+    jdk   'JDK17'
+    maven 'Maven3'
+  }
+
+  stages {
+    stage('Checkout') {
+      steps {
+        git url: 'https://github.com/RitamBhattacharya/RoomServiceAPIRestAssured', branch: 'main'
+      }
     }
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building the project...'
-                sh 'mvn clean compile'
-            }
+    stage('Build & Test') {
+      steps {
+        withMaven(maven: 'Maven3') {
+          bat 'mvn -B clean test -Dsurefire.suiteXmlFiles=testng.xml'
         }
-
-        stage('Test') {
-            steps {
-                echo 'Running TestNG tests...'
-                sh 'mvn test'
-            }
-            post {
-                always {
-                    echo 'Publishing TestNG results...'
-                    junit '**/target/surefire-reports/testng-results.xml'
-                }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying the application...'
-                // Add deployment steps here
-            }
-        }
+      }
     }
+  }
+
+  post {
+    always {
+      junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+
+      testNG(
+        reportFilenamePattern: 'target/surefire-reports/testng-results.xml',
+        showFailedBuilds: true,
+        escapeTestDescriptions: true,
+        escapeExceptionMessages: true
+      )
+
+      publishHTML(target: [
+        reportDir: 'target/ExtentReports',
+        reportFiles: 'RoomServiceApiReport.html',
+        reportName: 'Room Service API Report',
+        keepAll: true,
+        alwaysLinkToLastBuild: true,
+        allowMissing: true
+      ])
+
+      archiveArtifacts artifacts: 'target/ExtentReports/**, target/surefire-reports/**',
+                       fingerprint: true,
+                       allowEmptyArchive: true
+    }
+  }
 }
