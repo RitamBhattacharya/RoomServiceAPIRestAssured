@@ -1,28 +1,36 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven3'  // make sure Maven is configured in Jenkins Global Tool Configuration
+        jdk 'JDK17'     // use your configured JDK version
+    }
+
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
-                // Example: compile code
-                // sh 'mvn clean install'
+                echo 'Building the project...'
+                sh 'mvn clean compile'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running Tests...'
-                // Example: run unit tests
-                // sh 'mvn test'
+                echo 'Running TestNG tests...'
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    echo 'Publishing TestNG results...'
+                    junit '**/target/surefire-reports/testng-results.xml'
+                }
             }
         }
 
         stage('Deploy') {
             steps {
-                echo 'Deploying application...'
-                // Example: deploy code
-                // sh './deploy.sh'
+                echo 'Deploying the application...'
+                // Add deployment steps here
             }
         }
     }
