@@ -1,5 +1,5 @@
 # Ignore Maven target directory
-target
+#target
 
 # Ignore Eclipse settings
 .classpath
@@ -12,3 +12,4 @@ test-output
 # Ignore OS files
 .DS_Store
 Thumbs.db
+
