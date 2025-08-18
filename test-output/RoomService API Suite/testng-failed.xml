@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [RoomService API Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="RoomService API Tests(failed)">
+    <classes>
+      <class name="tests.GetRequestsTests">
+        <methods>
+          <include name="viewRoomByInvalidType"/>
+          <include name="afterMethod"/>
+          <include name="afterSuite"/>
+          <include name="beforeSuite"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- tests.GetRequestsTests -->
+      <class name="tests.DeleteRoomTest">
+        <methods>
+          <include name="testDeleteRoomNegative"/>
+          <include name="afterMethod"/>
+          <include name="afterSuite"/>
+          <include name="beforeSuite"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- tests.DeleteRoomTest -->
+      <class name="tests.AddRoomTest">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="afterSuite"/>
+          <include name="beforeSuite"/>
+          <include name="addMultipleRoom" invocation-numbers="3"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- tests.AddRoomTest -->
+      <class name="tests.UpdateRoomTest">
+        <methods>
+          <include name="afterMethod"/>
+          <include name="updateRoomPriceInvalidId"/>
+          <include name="afterSuite"/>
+          <include name="beforeSuite"/>
+          <include name="beforeMethod"/>
+        </methods>
+      </class> <!-- tests.UpdateRoomTest -->
+    </classes>
+  </test> <!-- RoomService API Tests(failed) -->
+</suite> <!-- Failed suite [RoomService API Suite] -->
